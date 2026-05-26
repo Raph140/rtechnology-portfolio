@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="RTechnology accompagne les particuliers, etudiants, entrepreneurs et entreprises avec des formations informatiques, logiciels, impressions et services numeriques modernes.">
+  <title>RTechnology | Solutions numeriques, formation & impression</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <canvas id="ambient-canvas" aria-hidden="true"></canvas>
+
+  <header class="site-header" id="top">
+    <nav class="navbar glass-panel" aria-label="Navigation principale">
+      <a class="brand" href="#top" aria-label="RTechnology accueil">
+        <span class="brand-mark">
+          <img src="assets/raphael-technology-logo.png" alt="RTechnology">
+        </span>
+        <span class="brand-name">RTechnology</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-links" data-nav-links>
+        <a href="#about">A propos</a>
+        <a href="#services">Services</a>
+        <a href="#projects">Realisations</a>
+        <a href="#skills">Expertises</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero section-shell">
+      <div class="hero-content reveal">
+        <p class="eyebrow"><i data-lucide="sparkles"></i> Votre partenaire numerique et creatif</p>
+        <h1>Former, creer et imprimer avec excellence.</h1>
+        <p class="hero-copy">
+          RTechnology est une entreprise moderne et innovante specialisee dans la formation informatique,
+          le developpement de logiciels, le design graphique, l'impression sur tout support et les services
+          numeriques professionnels.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#services">
+            Decouvrir nos services
+            <i data-lucide="arrow-up-right"></i>
+          </a>
+          <a class="btn btn-secondary" href="#projects">
+            Voir nos realisations
+            <i data-lucide="images"></i>
+          </a>
+        </div>
+      </div>
+
+      <aside class="hero-visual glass-panel reveal" aria-label="Presentation de RTechnology">
+        <div class="profile-card">
+          <div class="profile-topline">
+            <span class="status-dot"></span>
+            Solutions modernes pour votre image
+          </div>
+          <div class="logo-orbit">
+            <div class="logo-showcase">
+              <img src="assets/raphael-technology-logo.png" alt="Logo RTechnology">
+            </div>
+          </div>
+          <h2>RTechnology</h2>
+          <p>Formation, logiciels, impression, branding et communication visuelle pour une presence professionnelle.</p>
+          <div class="quick-stats">
+            <span><strong>360°</strong> digital</span>
+            <span><strong>Pro</strong> design</span>
+            <span><strong>Sur mesure</strong> solutions</span>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section-shell about-grid" id="about">
+      <div class="section-heading reveal">
+        <p class="eyebrow"><i data-lucide="building-2"></i> A propos</p>
+        <h2>L'innovation au service de votre reussite.</h2>
+      </div>
+      <div class="about-copy glass-panel reveal">
+        <p>
+          RTechnology accompagne les particuliers, les etudiants, les entrepreneurs et les entreprises dans leur
+          transformation numerique avec des solutions simples, creatives et professionnelles.
+        </p>
+        <p>
+          Nous aidons chacun a apprendre l'informatique de base, a developper ses competences numeriques et a
+          renforcer son image grace a des supports visuels modernes, des logiciels utiles et une impression soignee.
+        </p>
+        <p class="signature-line">Donner vie a vos idees. Des solutions modernes pour votre image.</p>
+      </div>
+    </section>
+
+    <section class="section-shell" id="services">
+      <div class="section-heading center reveal">
+        <p class="eyebrow"><i data-lucide="layers-3"></i> Services</p>
+        <h2>Des prestations completes pour apprendre, creer, gerer et communiquer.</h2>
+      </div>
+
+      <div class="card-grid services-grid">
+        <article class="service-card glass-panel reveal">
+          <i data-lucide="graduation-cap"></i>
+          <h3>Formation informatique de base</h3>
+          <p>Initiation pratique a l'ordinateur, Windows, Word, Excel, PowerPoint, Internet et aux emails pour gagner en autonomie.</p>
+        </article>
+        <article class="service-card glass-panel reveal">
+          <i data-lucide="file-spreadsheet"></i>
+          <h3>Bureautique professionnelle</h3>
+          <p>Apprentissage de la suite bureautique pour les etudiants, secretariats, administrations et activites professionnelles.</p>
+        </article>
+        <article class="service-card glass-panel reveal">
+          <i data-lucide="code-2"></i>
+          <h3>Developpement de logiciels</h3>
+          <p>Creation d'applications modernes, outils numeriques et solutions de gestion personnalisees pour entreprises.</p>
+        </article>
+        <article class="service-card glass-panel reveal">
+          <i data-lucide="settings-2"></i>
+          <h3>Outils de gestion sur mesure</h3>
+          <p>Conception de systemes pratiques pour organiser les ventes, stocks, clients, documents et operations quotidiennes.</p>
+        </article>
+        <article class="service-card glass-panel reveal">
+          <i data-lucide="printer"></i>
+          <h3>Impression sur tout support</h3>
+          <p>Baches, t-shirts, mugs, panneaux publicitaires, roll-up, cartes, objets et supports de communication de qualite.</p>
+        </article>
+        <article class="service-card glass-panel reveal">
+          <i data-lucide="palette"></i>
+          <h3>Design graphique</h3>
+          <p>Affiches, flyers, cartes de visite, visuels publicitaires et creations graphiques adaptees a votre marque.</p>
+        </article>
+        <article class="service-card glass-panel reveal">
+          <i data-lucide="badge-check"></i>
+          <h3>Branding & identite visuelle</h3>
+          <p>Creation d'une image coherente et memorisable: logo, couleurs, supports, style visuel et presence professionnelle.</p>
+        </article>
+        <article class="service-card glass-panel reveal">
+          <i data-lucide="megaphone"></i>
+          <h3>Services numeriques modernes</h3>
+          <p>Marketing digital, communication visuelle, accompagnement technique et solutions creatives pour booster votre activite.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-shell" id="projects">
+      <div class="section-heading reveal">
+        <p class="eyebrow"><i data-lucide="briefcase-business"></i> Realisations</p>
+        <h2>Une galerie de travaux concus pour informer, valoriser et faire rayonner les marques.</h2>
+        <p class="section-intro">
+          Ces realisations illustrent le savoir-faire de RTechnology dans le design graphique, l'impression,
+          la communication visuelle et le branding professionnel.
+        </p>
+      </div>
+
+      <div class="project-filters reveal" aria-label="Filtrer les realisations">
+        <button class="filter-btn active" type="button" data-filter="all">Tous</button>
+        <button class="filter-btn" type="button" data-filter="design">Design</button>
+        <button class="filter-btn" type="button" data-filter="print">Impression</button>
+        <button class="filter-btn" type="button" data-filter="brand">Branding</button>
+        <button class="filter-btn" type="button" data-filter="training">Formation</button>
+      </div>
+
+      <div class="project-grid gallery-grid">
+        <article class="project-card reveal" data-category="brand">
+          <div class="project-media"><img loading="lazy" decoding="async" src="assets/projects/performance-innovation.png" alt="Affiche Performance innovation RTechnology"></div>
+          <div class="project-body"><span>Communication digitale</span><h3>Performance & innovation</h3><p>Visuel premium affirmant l'esprit technologique de RTechnology avec une direction rouge dynamique.</p></div>
+        </article>
+        <article class="project-card reveal" data-category="design">
+          <div class="project-media"><img loading="lazy" decoding="async" src="assets/projects/redacsolution-memoires.png" alt="Affiche Redacsolution redaction de memoires"></div>
+          <div class="project-body"><span>Affiche publicitaire</span><h3>Redacsolution</h3><p>Support clair et structure pour promouvoir un service academique avec une mise en page professionnelle.</p></div>
+        </article>
+        <article class="project-card reveal" data-category="training">
+          <div class="project-media"><img loading="lazy" decoding="async" src="assets/projects/formation-bureautique.png" alt="Affiche formation informatique bureautique"></div>
+          <div class="project-body"><span>Formation informatique</span><h3>Bureautique professionnelle</h3><p>Creation visuelle pour presenter des modules Word, Excel, PowerPoint, Internet et emails.</p></div>
+        </article>
+        <article class="project-card reveal" data-category="print">
+          <div class="project-media"><img loading="lazy" decoding="async" src="assets/projects/offre-speciale-design-impression.png" alt="Affiche offre speciale design et impression"></div>
+          <div class="project-body"><span>Design & impression</span><h3>Offre speciale</h3><p>Composition commerciale moderne pour valoriser les services de creation graphique et d'impression.</p></div>
+        </article>
+        <article class="project-card reveal" data-category="brand">
+          <div class="project-media"><img loading="lazy" decoding="async" src="assets/projects/objets-publicitaires-rouges.png" alt="Objets publicitaires rouges RTechnology"></div>
+          <div class="project-body"><span>Objets publicitaires</span><h3>Pack rouge RTechnology</h3><p>Presentation d'objets marques pour renforcer la visibilite et la memorisation d'une identite visuelle.</p></div>
+        </article>
+        <article class="project-card reveal" data-category="design">
+          <div class="project-media"><img loading="lazy" decoding="async" src="assets/projects/mariage-style-save-date.png" alt="Magazine mariage save the date"></div>
+          <div class="project-body"><span>Edition & evenementiel</span><h3>Mariage & Style</h3><p>Design editorial elegant pour une annonce de mariage avec une ambiance premium et emotionnelle.</p></div>
+        </article>
+        <article class="project-card reveal" data-category="print">
+          <div class="project-media"><img loading="lazy" decoding="async" src="assets/projects/rollup-technologie.png" alt="Roll-up RTechnology"></div>
+          <div class="project-body"><span>Roll-up publicitaire</span><h3>Vos idees, notre technologie</h3><p>Support grand format pour presenter les services numeriques et la formation informatique.</p></div>
+        </article>
+        <article class="project-card reveal" data-category="brand">
+          <div class="project-media"><img loading="lazy" decoding="async" src="assets/projects/pack-branding-bleu.png" alt="Pack branding bleu RTechnology"></div>
+          <div class="project-body"><span>Branding textile</span><h3>Collection corporate bleue</h3><p>Mockup d'une gamme d'objets et vetements personnalises pour une marque coherente et solide.</p></div>
+        </article>
+        <article class="project-card reveal" data-category="training">
+          <div class="project-media"><img loading="lazy" decoding="async" src="assets/projects/informatique-services.png" alt="Affiche informatique precise et adaptee"></div>
+          <div class="project-body"><span>Services informatiques</span><h3>Informatique precise</h3><p>Affiche de service pour depannage, formation, installation logicielle et assistance numerique.</p></div>
+        </article>
+        <article class="project-card reveal" data-category="brand">
+          <div class="project-media"><img loading="lazy" decoding="async" src="assets/projects/objets-bureau-marque.png" alt="Objets de bureau marques RTechnology"></div>
+          <div class="project-body"><span>Identite de bureau</span><h3>Pack professionnel</h3><p>Univers visuel applique aux objets quotidiens pour renforcer l'image d'entreprise.</p></div>
+        </article>
+        <article class="project-card reveal" data-category="print">
+          <div class="project-media"><img loading="lazy" decoding="async" src="assets/projects/cartes-professionnelles.png" alt="Cartes professionnelles RTechnology"></div>
+          <div class="project-body"><span>Carte professionnelle</span><h3>Cartes d'identification</h3><p>Conception de cartes propres, lisibles et adaptees a un usage administratif ou professionnel.</p></div>
+        </article>
+        <article class="project-card reveal" data-category="brand">
+          <div class="project-media"><img loading="lazy" decoding="async" src="assets/projects/identite-turquoise.png" alt="Identite visuelle turquoise RTechnology"></div>
+          <div class="project-body"><span>Identite visuelle</span><h3>Concept turquoise</h3><p>Exploration graphique moderne pour decliner une marque sur objets, textile et supports digitaux.</p></div>
+        </article>
+        <article class="project-card reveal" data-category="design">
+          <div class="project-media"><img loading="lazy" decoding="async" src="assets/projects/solutions-numeriques.png" alt="Affiche solutions numeriques sur mesure"></div>
+          <div class="project-body"><span>Communication visuelle</span><h3>Solutions numeriques</h3><p>Affiche institutionnelle presentant des services fiables pour entreprises, entrepreneurs et particuliers.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-shell skills-layout" id="skills">
+      <div class="section-heading reveal">
+        <p class="eyebrow"><i data-lucide="cpu"></i> Expertises</p>
+        <h2>Une approche complete pour accompagner votre transformation numerique.</h2>
+      </div>
+
+      <div class="skills-panel glass-panel reveal">
+        <div class="skill-row">
+          <span><i data-lucide="graduation-cap"></i> Formation & accompagnement</span>
+          <strong>96%</strong>
+          <div class="skill-bar"><span style="width: 96%"></span></div>
+        </div>
+        <div class="skill-row">
+          <span><i data-lucide="code-2"></i> Logiciels & outils numeriques</span>
+          <strong>92%</strong>
+          <div class="skill-bar"><span style="width: 92%"></span></div>
+        </div>
+        <div class="skill-row">
+          <span><i data-lucide="palette"></i> Design graphique & branding</span>
+          <strong>95%</strong>
+          <div class="skill-bar"><span style="width: 95%"></span></div>
+        </div>
+        <div class="skill-row">
+          <span><i data-lucide="printer"></i> Impression & supports publicitaires</span>
+          <strong>94%</strong>
+          <div class="skill-bar"><span style="width: 94%"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell contact-layout" id="contact">
+      <div class="contact-copy reveal">
+        <p class="eyebrow"><i data-lucide="mail"></i> Contact</p>
+        <h2>Parlons de votre projet avec precision, creativite et ambition.</h2>
+        <p>
+          Vous souhaitez apprendre l'informatique, creer un logiciel, imprimer vos supports, concevoir une affiche
+          ou developper votre image professionnelle ? RTechnology vous accompagne avec une solution claire,
+          moderne et adaptee a votre objectif.
+        </p>
+        <div class="contact-points">
+          <span><i data-lucide="lightbulb"></i> Donner vie a vos idees</span>
+          <span><i data-lucide="rocket"></i> Innovation et excellence</span>
+        </div>
+      </div>
+
+      <form class="contact-form glass-panel reveal">
+        <label>
+          Nom
+          <input type="text" name="name" placeholder="Votre nom" required>
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" placeholder="vous@email.com" required>
+        </label>
+        <label>
+          Projet
+          <select name="project">
+            <option>Formation informatique</option>
+            <option>Developpement de logiciel</option>
+            <option>Design graphique</option>
+            <option>Impression sur support</option>
+            <option>Branding et publicite</option>
+            <option>Service numerique moderne</option>
+          </select>
+        </label>
+        <label>
+          Message
+          <textarea name="message" rows="5" placeholder="Decrivez votre besoin..." required></textarea>
+        </label>
+        <button class="btn btn-primary" type="submit">
+          Envoyer le message
+          <i data-lucide="arrow-right"></i>
+        </button>
+        <p class="form-note" data-form-note role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 RTechnology. Former, creer et imprimer avec excellence.</p>
+    <a href="#top">Retour en haut</a>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
