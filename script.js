@@ -81,8 +81,6 @@ filterButtons.forEach((button) => {
   });
 });
 
-const contactEmail = "raphaelkapapa594@gmail.com";
-
 function setFormNote(message, type) {
   formNote.textContent = message;
   formNote.classList.toggle("is-success", type === "success");
@@ -90,7 +88,7 @@ function setFormNote(message, type) {
 }
 
 function validateContactForm() {
-  const fields = [...form.querySelectorAll("input, textarea")];
+  const fields = [...form.querySelectorAll("input:not([type='hidden']), select, textarea")];
   let isValid = true;
 
   fields.forEach((field) => {
@@ -107,7 +105,7 @@ function validateContactForm() {
   return isValid;
 }
 
-form.querySelectorAll("input, textarea").forEach((field) => {
+form.querySelectorAll("input:not([type='hidden']), select, textarea").forEach((field) => {
   field.addEventListener("input", () => {
     field.classList.remove("is-invalid");
     if (formNote.classList.contains("is-error")) {
@@ -116,7 +114,7 @@ form.querySelectorAll("input, textarea").forEach((field) => {
   });
 });
 
-form.addEventListener("submit", (event) => {
+form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   if (!validateContactForm()) {
@@ -125,28 +123,33 @@ form.addEventListener("submit", (event) => {
   }
 
   const data = new FormData(form);
-  const name = data.get("name").trim();
-  const email = data.get("email").trim();
-  const project = data.get("project");
-  const message = data.get("message").trim();
-  const subject = `Nouveau message RTechnology - ${project}`;
-  const body = [
-    `Nom : ${name}`,
-    `Email : ${email}`,
-    `Projet : ${project}`,
-    "",
-    "Message :",
-    message
-  ].join("\n");
-  const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(contactEmail)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const submitButton = form.querySelector("button[type='submit']");
 
-  const composeWindow = window.open(gmailUrl, "_blank", "noopener,noreferrer");
-  if (!composeWindow) {
-    window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  submitButton.disabled = true;
+  submitButton.classList.add("is-loading");
+  setFormNote("Envoi du message en cours...", "");
+
+  try {
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: data,
+      headers: {
+        Accept: "application/json"
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error("FormSubmit request failed");
+    }
+
+    setFormNote("Merci, votre message a ete envoye avec succes.", "success");
+    form.reset();
+  } catch (error) {
+    setFormNote("L'envoi a echoue. Veuillez reessayer dans un instant ou utiliser le bouton WhatsApp.", "error");
+  } finally {
+    submitButton.disabled = false;
+    submitButton.classList.remove("is-loading");
   }
-
-  setFormNote("Message prepare avec succes. Votre messagerie s'ouvre pour finaliser l'envoi.", "success");
-  form.reset();
 });
 
 const pointer = { x: 0.5, y: 0.5 };

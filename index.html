@@ -288,7 +288,10 @@
         </div>
       </div>
 
-      <form class="contact-form glass-panel reveal" novalidate>
+      <form class="contact-form glass-panel reveal" action="https://formsubmit.co/raphaelkapapa594@gmail.com" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="Nouveau message depuis le site RTechnology">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
         <label>
           Nom
           <input type="text" name="name" placeholder="Votre nom" minlength="2" required>
@@ -296,6 +299,10 @@
         <label>
           Email
           <input type="email" name="email" placeholder="vous@email.com" required>
+        </label>
+        <label>
+          Telephone
+          <input type="tel" name="phone" placeholder="+243 ..." minlength="8" required>
         </label>
         <label>
           Projet
