@@ -81,9 +81,71 @@ filterButtons.forEach((button) => {
   });
 });
 
+const contactEmail = "raphaelkapapa594@gmail.com";
+
+function setFormNote(message, type) {
+  formNote.textContent = message;
+  formNote.classList.toggle("is-success", type === "success");
+  formNote.classList.toggle("is-error", type === "error");
+}
+
+function validateContactForm() {
+  const fields = [...form.querySelectorAll("input, textarea")];
+  let isValid = true;
+
+  fields.forEach((field) => {
+    const value = field.value.trim();
+    const hasMinLength = !field.minLength || value.length >= field.minLength;
+    const fieldValid = field.checkValidity() && hasMinLength;
+
+    field.classList.toggle("is-invalid", !fieldValid);
+    if (!fieldValid) {
+      isValid = false;
+    }
+  });
+
+  return isValid;
+}
+
+form.querySelectorAll("input, textarea").forEach((field) => {
+  field.addEventListener("input", () => {
+    field.classList.remove("is-invalid");
+    if (formNote.classList.contains("is-error")) {
+      setFormNote("", "");
+    }
+  });
+});
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
-  formNote.textContent = "Merci, votre message est pret a etre envoye.";
+
+  if (!validateContactForm()) {
+    setFormNote("Veuillez remplir correctement tous les champs avant l'envoi.", "error");
+    return;
+  }
+
+  const data = new FormData(form);
+  const name = data.get("name").trim();
+  const email = data.get("email").trim();
+  const project = data.get("project");
+  const message = data.get("message").trim();
+  const subject = `Nouveau message RTechnology - ${project}`;
+  const body = [
+    `Nom : ${name}`,
+    `Email : ${email}`,
+    `Projet : ${project}`,
+    "",
+    "Message :",
+    message
+  ].join("\n");
+  const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(contactEmail)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+  const composeWindow = window.open(gmailUrl, "_blank", "noopener,noreferrer");
+  if (!composeWindow) {
+    window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }
+
+  setFormNote("Message prepare avec succes. Votre messagerie s'ouvre pour finaliser l'envoi.", "success");
   form.reset();
 });
 
