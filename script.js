@@ -152,51 +152,29 @@ form.querySelectorAll("input:not([type='hidden']), select, textarea").forEach((f
   });
 });
 
-form.addEventListener("submit", async (event) => {
-  event.preventDefault();
-
+form.addEventListener("submit", (event) => {
   if (!validateContactForm()) {
+    event.preventDefault();
     setFormNote("Veuillez remplir correctement tous les champs avant l'envoi.", "error");
     return;
   }
 
   const data = new FormData(form);
   const submitButton = form.querySelector("button[type='submit']");
-
-  submitButton.disabled = true;
   submitButton.classList.add("is-loading");
   setFormNote("Envoi du message en cours...", "");
-
-  try {
-    const response = await fetch(form.action, {
-      method: "POST",
-      body: data,
-      headers: {
-        Accept: "application/json"
-      }
-    });
-
-    if (!response.ok) {
-      throw new Error("FormSubmit request failed");
-    }
-
-    trackEvent("contact_form_submit", {
-      event_category: "lead",
-      event_label: data.get("project") || "Contact RTechnology"
-    });
-    setFormNote("Merci, votre message a ete envoye avec succes.", "success");
-    form.reset();
-  } catch (error) {
-    trackEvent("contact_form_error", {
-      event_category: "lead",
-      event_label: "FormSubmit error"
-    });
-    setFormNote("L'envoi a echoue. Veuillez reessayer dans un instant ou utiliser le bouton WhatsApp.", "error");
-  } finally {
-    submitButton.disabled = false;
-    submitButton.classList.remove("is-loading");
-  }
+  sessionStorage.setItem("rtechnologyFormSubmitted", "true");
+  trackEvent("contact_form_submit", {
+    event_category: "lead",
+    event_label: data.get("projet") || "Contact RTechnology"
+  });
 });
+
+if (window.location.hash === "#contact" && sessionStorage.getItem("rtechnologyFormSubmitted") === "true") {
+  sessionStorage.removeItem("rtechnologyFormSubmitted");
+  setFormNote("Merci, votre message a ete envoye avec succes.", "success");
+  form.reset();
+}
 
 const pointer = { x: 0.5, y: 0.5 };
 const particles = [];
