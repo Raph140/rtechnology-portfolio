@@ -6,6 +6,31 @@ const filterButtons = document.querySelectorAll(".filter-btn");
 const projectCards = document.querySelectorAll(".project-card");
 const canvas = document.querySelector("#ambient-canvas");
 const ctx = canvas.getContext("2d");
+const gaMeasurementId = "G-SHLHFWY37E";
+
+window.dataLayer = window.dataLayer || [];
+window.gtag = window.gtag || function gtag() {
+  window.dataLayer.push(arguments);
+};
+
+function trackPageView() {
+  if (typeof window.gtag !== "function") {
+    return;
+  }
+
+  window.gtag("config", gaMeasurementId, {
+    page_title: document.title,
+    page_path: window.location.pathname + window.location.search + window.location.hash
+  });
+}
+
+function trackEvent(eventName, parameters = {}) {
+  if (typeof window.gtag !== "function") {
+    return;
+  }
+
+  window.gtag("event", eventName, parameters);
+}
 
 if (window.lucide) {
   window.lucide.createIcons();
@@ -26,6 +51,19 @@ navToggle.addEventListener("click", () => {
 navLinks.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", () => {
     setMenuState(false);
+  });
+});
+
+window.addEventListener("hashchange", trackPageView);
+window.addEventListener("popstate", trackPageView);
+
+document.querySelectorAll('a[href*="wa.me"]').forEach((link) => {
+  link.addEventListener("click", () => {
+    trackEvent("whatsapp_click", {
+      event_category: "engagement",
+      event_label: link.getAttribute("aria-label") || "WhatsApp RTechnology",
+      link_url: link.href
+    });
   });
 });
 
@@ -142,9 +180,17 @@ form.addEventListener("submit", async (event) => {
       throw new Error("FormSubmit request failed");
     }
 
+    trackEvent("contact_form_submit", {
+      event_category: "lead",
+      event_label: data.get("project") || "Contact RTechnology"
+    });
     setFormNote("Merci, votre message a ete envoye avec succes.", "success");
     form.reset();
   } catch (error) {
+    trackEvent("contact_form_error", {
+      event_category: "lead",
+      event_label: "FormSubmit error"
+    });
     setFormNote("L'envoi a echoue. Veuillez reessayer dans un instant ou utiliser le bouton WhatsApp.", "error");
   } finally {
     submitButton.disabled = false;
